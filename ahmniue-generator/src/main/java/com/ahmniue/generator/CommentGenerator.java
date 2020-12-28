@@ -1,4 +1,4 @@
-package com.ahmniue;
+package com.ahmniue.generator;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;

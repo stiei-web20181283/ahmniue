@@ -1,4 +1,4 @@
-package com.ahmniue;
+package com.ahmniue.generator;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.xml.ConfigurationParser;
