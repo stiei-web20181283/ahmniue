@@ -11,6 +11,7 @@
     <modules>
         <module>ahmniue-common</module>
         <module>ahmniue-generator</module>
+        <module>ahmniue-manage</module>
     </modules>
 
 
