@@ -30,11 +30,11 @@
             <property name="nullCatalogMeansCurrent" value="true" />
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="com.ahmniue.model" targetProject="ahmniue-generator\src\main\java"/>
+        <javaModelGenerator targetPackage="com.ahmniue.generator.model" targetProject="ahmniue-generator\src\main\java"/>
 
-        <sqlMapGenerator targetPackage="com.ahmniue.mapper" targetProject="ahmniue-generator\src\main\resources"/>
+        <sqlMapGenerator targetPackage="com.ahmniue.generator.mapper" targetProject="ahmniue-generator\src\main\resources"/>
 
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ahmniue.mapper"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ahmniue.generator.mapper"
                              targetProject="ahmniue-generator\src\main\java"/>
         <!--生成全部表tableName设为%-->
         <table tableName="%">
