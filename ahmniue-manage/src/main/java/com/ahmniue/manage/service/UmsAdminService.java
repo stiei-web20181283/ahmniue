@@ -5,16 +5,13 @@ import com.ahmniue.generator.model.UmsAdmin;
 import com.ahmniue.generator.model.UmsResource;
 import com.ahmniue.generator.model.UmsRole;
 import com.ahmniue.manage.dto.UmsAdminParam;
+import com.ahmniue.manage.dto.UpdateAdminPasswordParam;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 public interface UmsAdminService {
-    /**
-     * 获取所有后台管理员
-     */
-    List<UmsAdmin> listAllUser();
 
     /**
      * 根据用户名获取后台管理员
@@ -75,6 +72,11 @@ public interface UmsAdminService {
      * 获取指定用户的可访问资源
      */
     List<UmsResource> getResourceList(Long adminId);
+
+    /**
+     * 修改密码
+     */
+    int updatePassword(UpdateAdminPasswordParam updatePasswordParam);
 
     /**
      * 获取用户信息

@@ -9,7 +9,6 @@ import javax.validation.constraints.NotEmpty;
 
 /**
  * 用户登录参数
- * Created by macro on 2018/4/26.
  */
 @Getter
 @Setter
@@ -20,13 +19,11 @@ public class UmsAdminParam {
     @NotEmpty
     @ApiModelProperty(value = "密码", required = true)
     private String password;
-    @ApiModelProperty(value = "用户头像")
-    private String icon;
+    @ApiModelProperty(value = "头像")
+    private String avatar;
     @Email
     @ApiModelProperty(value = "邮箱")
     private String email;
-    @ApiModelProperty(value = "用户昵称")
-    private String nickName;
-    @ApiModelProperty(value = "备注")
-    private String note;
+    @ApiModelProperty(value = "昵称")
+    private String nickname;
 }
