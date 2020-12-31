@@ -2,9 +2,8 @@ package com.ahmniue.generator.mapper;
 
 import com.ahmniue.generator.model.UmsAdmin;
 import com.ahmniue.generator.model.UmsAdminExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface UmsAdminMapper {
     long countByExample(UmsAdminExample example);

@@ -2,9 +2,8 @@ package com.ahmniue.generator.mapper;
 
 import com.ahmniue.generator.model.UmsAdminRoleRelation;
 import com.ahmniue.generator.model.UmsAdminRoleRelationExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface UmsAdminRoleRelationMapper {
     long countByExample(UmsAdminRoleRelationExample example);
