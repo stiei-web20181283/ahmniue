@@ -12,6 +12,7 @@
         <module>ahmniue-common</module>
         <module>ahmniue-generator</module>
         <module>ahmniue-manage</module>
+        <module>ahmniue-security</module>
     </modules>
 
 
@@ -21,7 +22,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.0</version>
+        <version>2.3.0.RELEASE</version>
         <relativePath/>
     </parent>
     <properties>
@@ -42,6 +43,7 @@
         <mybatis.version>3.5.5</mybatis.version>
         <mysql-connector.version>8.0.20</mysql-connector.version>
         <spring-data-commons.version>2.3.0.RELEASE</spring-data-commons.version>
+        <jjwt.version>0.9.0</jjwt.version>
         <logstash-logback.version>5.3</logstash-logback.version>
     </properties>
 
@@ -84,10 +86,17 @@
             </dependency>
             <!--MBG生成模块-->
             <dependency>
-                <groupId>ccom.ahmniue</groupId>
+                <groupId>com.ahmniue</groupId>
                 <artifactId>ahmniue-generator</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
+            <!--安全模块-->
+            <dependency>
+                <groupId>com.ahmniue</groupId>
+                <artifactId>ahmniue-security</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
             <!-- Spring Boot Mybatis 依赖 -->
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
@@ -199,6 +208,12 @@
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-commons</artifactId>
                 <version>${spring-data-commons.version}</version>
+            </dependency>
+            <!--JWT(Json Web Token)登录支持-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
             </dependency>
             <!--集成logstash-->
             <dependency>
