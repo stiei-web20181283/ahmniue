@@ -25,9 +25,9 @@ import java.util.concurrent.ConcurrentHashMap;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class AhmniueSecurityConfig extends SecurityConfig {
 
-    @Autowired(required = false)
+    @Autowired
     private UmsAdminService adminService;
-    @Autowired(required = false)
+    @Autowired
     private UmsResourceService resourceService;
 
     @Bean
