@@ -4,35 +4,40 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
-public class User implements Serializable {
-    @ApiModelProperty(value = "主键")
-    private Integer id;
+public class UmsAdmin implements Serializable {
+    private Long id;
 
-    @ApiModelProperty(value = "姓名")
+    @ApiModelProperty(value = "用户名")
     private String username;
 
     @ApiModelProperty(value = "密码")
     private String password;
 
-    @ApiModelProperty(value = "头像")
-    private String avatar;
+    @ApiModelProperty(value = "昵称")
+    private String nickname;
 
     @ApiModelProperty(value = "邮箱")
     private String email;
 
-    @ApiModelProperty(value = "上次登录时间")
+    @ApiModelProperty(value = "头像")
+    private String avatar;
+
+    @ApiModelProperty(value = "创建时间")
+    private Date createTime;
+
+    @ApiModelProperty(value = "登录时间")
     private Date loginTime;
 
-    @ApiModelProperty(value = "状态")
-    private String status;
+    @ApiModelProperty(value = "帐号启用状态:0->禁用；1->启用")
+    private Integer status;
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -52,12 +57,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getEmail() {
@@ -68,6 +73,22 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
     public Date getLoginTime() {
         return loginTime;
     }
@@ -76,11 +97,11 @@ public class User implements Serializable {
         this.loginTime = loginTime;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -93,8 +114,10 @@ public class User implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);
-        sb.append(", avatar=").append(avatar);
+        sb.append(", nickname=").append(nickname);
         sb.append(", email=").append(email);
+        sb.append(", avatar=").append(avatar);
+        sb.append(", createTime=").append(createTime);
         sb.append(", loginTime=").append(loginTime);
         sb.append(", status=").append(status);
         sb.append(", serialVersionUID=").append(serialVersionUID);
