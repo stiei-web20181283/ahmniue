@@ -18,16 +18,16 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * mall-security模块相关配置.
+ * security模块相关配置.
  */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class ManageSecurityConfig extends SecurityConfig {
+public class AhmniueSecurityConfig extends SecurityConfig {
 
-    @Autowired
+    @Autowired(required = false)
     private UmsAdminService adminService;
-    @Autowired
+    @Autowired(required = false)
     private UmsResourceService resourceService;
 
     @Bean
