@@ -7,9 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ahmniue-manage" />
-        <module name="ahmniue-common" />
         <module name="ahmniue-generator" />
+        <module name="ahmniue-manage" />
+        <module name="ahmniue-security" />
+        <module name="ahmniue-common" />
       </profile>
     </annotationProcessing>
   </component>
@@ -18,6 +19,7 @@
       <module name="ahmniue-common" options="-parameters" />
       <module name="ahmniue-generator" options="-parameters" />
       <module name="ahmniue-manage" options="-parameters" />
+      <module name="ahmniue-security" options="-parameters" />
     </option>
   </component>
 </project>

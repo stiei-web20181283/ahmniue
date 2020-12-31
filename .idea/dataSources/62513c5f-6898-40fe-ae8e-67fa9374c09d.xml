@@ -716,58 +716,54 @@
       <ObjectGrants>ALL PRIVILEGES|ahmniue:null
 </ObjectGrants>
     </user>
-    <table id="224" parent="2" name="test">
-      <Comment>测试</Comment>
-    </table>
-    <table id="225" parent="2" name="user">
-      <Comment>用户表</Comment>
-    </table>
-    <column id="226" parent="224" name="column_1">
+    <table id="224" parent="2" name="ums_admin"/>
+    <column id="225" parent="224" name="id">
       <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-    </column>
-    <column id="227" parent="224" name="column_2">
-      <Position>2</Position>
-      <DataType>int(11)|0s</DataType>
-    </column>
-    <column id="228" parent="225" name="id">
-      <Position>1</Position>
-      <Comment>主键</Comment>
-      <DataType>int(11)|0s</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="229" parent="225" name="username">
+    <column id="226" parent="224" name="username">
       <Position>2</Position>
-      <Comment>姓名</Comment>
-      <DataType>varchar(255)|0s</DataType>
+      <Comment>用户名</Comment>
+      <DataType>varchar(64)|0s</DataType>
     </column>
-    <column id="230" parent="225" name="password">
+    <column id="227" parent="224" name="password">
       <Position>3</Position>
       <Comment>密码</Comment>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>varchar(64)|0s</DataType>
     </column>
-    <column id="231" parent="225" name="avatar">
+    <column id="228" parent="224" name="nickname">
       <Position>4</Position>
-      <Comment>头像</Comment>
-      <DataType>varchar(255)|0s</DataType>
+      <Comment>昵称</Comment>
+      <DataType>varchar(64)|0s</DataType>
     </column>
-    <column id="232" parent="225" name="email">
+    <column id="229" parent="224" name="email">
       <Position>5</Position>
       <Comment>邮箱</Comment>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="233" parent="225" name="login_time">
+    <column id="230" parent="224" name="avatar">
       <Position>6</Position>
-      <Comment>上次登录时间</Comment>
+      <Comment>头像</Comment>
+      <DataType>varchar(500)|0s</DataType>
+    </column>
+    <column id="231" parent="224" name="create_time">
+      <Position>7</Position>
+      <Comment>创建时间</Comment>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="234" parent="225" name="status">
-      <Position>7</Position>
-      <Comment>状态</Comment>
-      <DataType>varchar(255)|0s</DataType>
+    <column id="232" parent="224" name="login_time">
+      <Position>8</Position>
+      <Comment>登录时间</Comment>
+      <DataType>datetime|0s</DataType>
     </column>
-    <key id="235" parent="225" name="PRIMARY">
+    <column id="233" parent="224" name="status">
+      <Position>9</Position>
+      <Comment>帐号启用状态:0-&gt;禁用；1-&gt;启用</Comment>
+      <DataType>int(1)|0s</DataType>
+    </column>
+    <key id="234" parent="224" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
