@@ -13,6 +13,7 @@
         <module>ahmniue-generator</module>
         <module>ahmniue-manage</module>
         <module>ahmniue-security</module>
+        <module>ahmniue-protal</module>
     </modules>
 
 
