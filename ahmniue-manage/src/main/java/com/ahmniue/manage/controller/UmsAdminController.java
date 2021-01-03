@@ -9,6 +9,7 @@ import com.ahmniue.manage.dto.UmsAdminLoginParam;
 import com.ahmniue.manage.dto.UmsAdminParam;
 import com.ahmniue.manage.dto.UpdateAdminPasswordParam;
 import com.ahmniue.manage.service.UmsAdminService;
+import com.ahmniue.manage.service.UmsMenuService;
 import com.ahmniue.manage.service.UmsRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -40,6 +41,9 @@ public class UmsAdminController {
     private UmsAdminService adminService;
     @Autowired
     private UmsRoleService roleService;
+    @Autowired
+    private UmsMenuService menuService;
+
 
     @ApiOperation("根据用户名或姓名分页获取用户列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -102,8 +106,8 @@ public class UmsAdminController {
         UmsAdmin umsAdmin = adminService.getAdminByUsername(username);
         Map<String, Object> data = new HashMap<>();
         data.put("username", umsAdmin.getUsername());
-        data.put("menus", roleService.getMenuList(umsAdmin.getId()));
-        data.put("icon", umsAdmin.getAvatar());
+        data.put("menus", menuService.treeListRole(umsAdmin.getId()));
+        data.put("avatar", umsAdmin.getAvatar());
         List<UmsRole> roleList = adminService.getRoleList(umsAdmin.getId());
         if(CollUtil.isNotEmpty(roleList)){
             List<String> roles = roleList.stream().map(UmsRole::getName).collect(Collectors.toList());

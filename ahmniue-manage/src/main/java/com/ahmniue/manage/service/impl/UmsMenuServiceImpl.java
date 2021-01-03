@@ -1,5 +1,6 @@
 package com.ahmniue.manage.service.impl;
 
+import com.ahmniue.manage.service.UmsRoleService;
 import com.github.pagehelper.PageHelper;
 import com.ahmniue.manage.dto.UmsMenuNode;
 import com.ahmniue.generator.mapper.UmsMenuMapper;
@@ -20,6 +21,8 @@ import java.util.stream.Collectors;
 public class UmsMenuServiceImpl implements UmsMenuService {
     @Autowired
     private UmsMenuMapper menuMapper;
+    @Autowired
+    private UmsRoleService roleService;
 
     @Override
     public int create(UmsMenu umsMenu) {
@@ -75,6 +78,16 @@ public class UmsMenuServiceImpl implements UmsMenuService {
     @Override
     public List<UmsMenuNode> treeList() {
         List<UmsMenu> menuList = menuMapper.selectByExample(new UmsMenuExample());
+        System.out.println(menuList);
+        List<UmsMenuNode> result = menuList.stream()
+                .filter(menu -> menu.getParentId().equals(0L))
+                .map(menu -> covertMenuNode(menu, menuList)).collect(Collectors.toList());
+        return result;
+    }
+
+    @Override
+    public List<UmsMenuNode> treeListRole(Long adminId) {
+        List<UmsMenu> menuList = roleService.getMenuList(adminId);
         List<UmsMenuNode> result = menuList.stream()
                 .filter(menu -> menu.getParentId().equals(0L))
                 .map(menu -> covertMenuNode(menu, menuList)).collect(Collectors.toList());

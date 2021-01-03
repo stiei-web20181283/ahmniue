@@ -41,6 +41,11 @@ public interface UmsMenuService {
     List<UmsMenuNode> treeList();
 
     /**
+     * 根据用户返回树形结构菜单列表
+     */
+    List<UmsMenuNode> treeListRole(Long adminId);
+
+    /**
      * 修改菜单显示状态
      */
     int updateHidden(Long id, Integer hidden);
