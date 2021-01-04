@@ -45,13 +45,14 @@ public class UmsAdminController {
     private UmsMenuService menuService;
 
 
-    @ApiOperation("根据用户名或姓名分页获取用户列表")
+    @ApiOperation("根据用户名、姓名或者状态分页获取用户列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<UmsAdmin>> list(@RequestParam(value = "keyword", required = false) String keyword,
+                                                   @RequestParam(value = "status", required = false) Integer status,
                                                    @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
                                                    @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        List<UmsAdmin> adminList = adminService.list(keyword, pageSize, pageNum);
+        List<UmsAdmin> adminList = adminService.list(keyword, status, pageSize, pageNum);
         return CommonResult.success(CommonPage.restPage(adminList));
     }
 
