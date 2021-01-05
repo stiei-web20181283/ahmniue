@@ -37,6 +37,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //允许跨域请求的OPTIONS请求
         registry.antMatchers(HttpMethod.OPTIONS)
                 .permitAll();
+        //设置X-Frame-Options 响应头,可以嵌套ifram中去.
+        registry.and()
+                .headers()
+                .frameOptions()
+                .disable();
         // 任何请求需要身份认证
         registry.and()
                 .authorizeRequests()
