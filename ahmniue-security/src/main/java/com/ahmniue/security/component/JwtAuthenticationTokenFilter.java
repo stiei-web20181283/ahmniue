@@ -51,7 +51,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                 }
             }
         }
-        response.setHeader("x-frame-options", "SAMEORIGIN");
+//        response.setHeader("x-frame-options", "SAMEORIGIN");
         chain.doFilter(request, response);
     }
 }
