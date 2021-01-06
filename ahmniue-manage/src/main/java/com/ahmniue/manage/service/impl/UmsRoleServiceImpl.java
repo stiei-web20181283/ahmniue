@@ -31,6 +31,12 @@ public class UmsRoleServiceImpl implements UmsRoleService {
     private UmsRoleDao roleDao;
     @Autowired
     private UmsAdminCacheService adminCacheService;
+
+    @Override
+    public UmsRole getItem(Long id) {
+        return roleMapper.selectByPrimaryKey(id);
+    }
+
     @Override
     public int create(UmsRole role) {
         role.setCreateTime(new Date());

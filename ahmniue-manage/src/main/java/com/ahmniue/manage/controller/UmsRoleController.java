@@ -47,6 +47,13 @@ public class UmsRoleController {
         }
         return CommonResult.failed();
     }
+    @ApiOperation("根据ID获取角色详情")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<UmsRole> getItem(@PathVariable Long id) {
+        UmsRole umsRole = roleService.getItem(id);
+        return CommonResult.success(umsRole);
+    }
 
     @ApiOperation("批量删除角色")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)

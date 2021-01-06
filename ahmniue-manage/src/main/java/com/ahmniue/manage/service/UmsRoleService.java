@@ -13,6 +13,10 @@ import java.util.List;
  */
 public interface UmsRoleService {
     /**
+     * 根据ID获取角色详情
+     */
+    UmsRole getItem(Long id);
+    /**
      * 添加角色
      */
     int create(UmsRole role);
