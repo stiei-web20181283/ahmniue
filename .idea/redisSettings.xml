@@ -11,7 +11,7 @@
           <option name="sercurityInfo">
             <SercurityInfo />
           </option>
-          <option name="serverUrl" value="lexcubia.com:6379" />
+          <option name="serverUrl" value="api.lexcubia.com:6379" />
         </ServerConfiguration>
       </list>
     </option>
