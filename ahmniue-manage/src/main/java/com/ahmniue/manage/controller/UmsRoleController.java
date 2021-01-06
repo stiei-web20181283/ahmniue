@@ -16,11 +16,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 后台用户角色管理Controller
- * Created by macro on 2018/9/30.
+ * 后台角色管理Controller
  */
 @Controller
-@Api(tags = "UmsRoleController", description = "后台用户角色管理")
+@Api(tags = "UmsRoleController", description = "后台角色管理")
 @RequestMapping("/role")
 public class UmsRoleController {
     @Autowired
