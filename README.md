@@ -20,12 +20,12 @@
 #### 项目结构
 项目采用分模块开发
 - ahmniue-common    公共模块
-- ahmniue-manage   后台管理
-- ~~ahmniue-protal  前台商城模块~~
+- ahmniue-manage   后台管理模块（支持ahmniue-admin业务功能）
+- ~~ahmniue-protal  前台商城模块（支持ahmniue-vue业务功能）~~
 - ~~ahmniue-wechat    微信相关模块~~
 - ahmniue-generator 代码生成模块
 - ahmniue-security      安全模块
-- ~~ahmniue-search  搜索模块模
+- ~~ahmniue-search  搜索模块~~
 ## 技术选型
     * 1 后端使用技术
         * 1.1 SpringBoot2
