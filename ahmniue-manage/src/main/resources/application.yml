@@ -27,7 +27,7 @@ redis:
     admin: 'ums:admin'
     resourceList: 'ums:resourceList'
   expire:
-    common: 86400 # 24小时
+    common: 3600 #1小时
 
 tencent:
   secretId: AKID3OssbvlvgIi7JE861iEestfd185wsjjT
