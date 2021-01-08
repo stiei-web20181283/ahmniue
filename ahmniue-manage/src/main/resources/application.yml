@@ -29,6 +29,14 @@ redis:
   expire:
     common: 86400 # 24小时
 
+tencent:
+  secretId: AKID3OssbvlvgIi7JE861iEestfd185wsjjT
+  secretKey: P1PYWO1NU0rRlslqgFkfMn13dy5q674D
+  region: ap-shanghai
+  bucketName: ahmniue-1257961979
+  path: https://ahmniue-1257961979.cos.ap-shanghai.myqcloud.com
+  prefix: ahmniue_admin/images/
+
 secure:
   ignored:
     urls: #安全路径白名单
