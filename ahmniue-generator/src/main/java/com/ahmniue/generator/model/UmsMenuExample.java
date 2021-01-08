@@ -674,6 +674,66 @@ public class UmsMenuExample {
             addCriterion("hidden not between", value1, value2, "hidden");
             return (Criteria) this;
         }
+
+        public Criteria andHaschildrenIsNull() {
+            addCriterion("hasChildren is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHaschildrenIsNotNull() {
+            addCriterion("hasChildren is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHaschildrenEqualTo(Integer value) {
+            addCriterion("hasChildren =", value, "haschildren");
+            return (Criteria) this;
+        }
+
+        public Criteria andHaschildrenNotEqualTo(Integer value) {
+            addCriterion("hasChildren <>", value, "haschildren");
+            return (Criteria) this;
+        }
+
+        public Criteria andHaschildrenGreaterThan(Integer value) {
+            addCriterion("hasChildren >", value, "haschildren");
+            return (Criteria) this;
+        }
+
+        public Criteria andHaschildrenGreaterThanOrEqualTo(Integer value) {
+            addCriterion("hasChildren >=", value, "haschildren");
+            return (Criteria) this;
+        }
+
+        public Criteria andHaschildrenLessThan(Integer value) {
+            addCriterion("hasChildren <", value, "haschildren");
+            return (Criteria) this;
+        }
+
+        public Criteria andHaschildrenLessThanOrEqualTo(Integer value) {
+            addCriterion("hasChildren <=", value, "haschildren");
+            return (Criteria) this;
+        }
+
+        public Criteria andHaschildrenIn(List<Integer> values) {
+            addCriterion("hasChildren in", values, "haschildren");
+            return (Criteria) this;
+        }
+
+        public Criteria andHaschildrenNotIn(List<Integer> values) {
+            addCriterion("hasChildren not in", values, "haschildren");
+            return (Criteria) this;
+        }
+
+        public Criteria andHaschildrenBetween(Integer value1, Integer value2) {
+            addCriterion("hasChildren between", value1, value2, "haschildren");
+            return (Criteria) this;
+        }
+
+        public Criteria andHaschildrenNotBetween(Integer value1, Integer value2) {
+            addCriterion("hasChildren not between", value1, value2, "haschildren");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

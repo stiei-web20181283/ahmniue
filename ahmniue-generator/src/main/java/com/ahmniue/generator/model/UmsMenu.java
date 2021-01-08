@@ -31,6 +31,9 @@ public class UmsMenu implements Serializable {
     @ApiModelProperty(value = "前端隐藏")
     private Integer hidden;
 
+    @ApiModelProperty(value = "是否有子节点true: 1，false: 0")
+    private Integer haschildren;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -105,6 +108,14 @@ public class UmsMenu implements Serializable {
         this.hidden = hidden;
     }
 
+    public Integer getHaschildren() {
+        return haschildren;
+    }
+
+    public void setHaschildren(Integer haschildren) {
+        this.haschildren = haschildren;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -120,6 +131,7 @@ public class UmsMenu implements Serializable {
         sb.append(", name=").append(name);
         sb.append(", icon=").append(icon);
         sb.append(", hidden=").append(hidden);
+        sb.append(", haschildren=").append(haschildren);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
