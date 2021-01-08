@@ -27,7 +27,9 @@ public class UmsMenuServiceImpl implements UmsMenuService {
     @Override
     public int create(UmsMenu umsMenu) {
         umsMenu.setCreateTime(new Date());
+        umsMenu.setHaschildren(0);
         updateLevel(umsMenu);
+        updateHasChild(umsMenu);
         return menuMapper.insert(umsMenu);
     }
 
@@ -48,11 +50,25 @@ public class UmsMenuServiceImpl implements UmsMenuService {
             }
         }
     }
-
+    /**
+     * 更新父节点信息
+     */
+    private void  updateHasChild(UmsMenu umsMenu){
+        if (umsMenu.getParentId() != 0) {
+            UmsMenu parentMenu = menuMapper.selectByPrimaryKey(umsMenu.getParentId());
+            if (parentMenu != null) {
+                parentMenu.setHaschildren(1);
+            } else {
+                parentMenu.setHaschildren(0);
+            }
+            menuMapper.updateByPrimaryKeySelective(parentMenu);
+        }
+    }
     @Override
     public int update(Long id, UmsMenu umsMenu) {
         umsMenu.setId(id);
         updateLevel(umsMenu);
+        updateHasChild(umsMenu);
         return menuMapper.updateByPrimaryKeySelective(umsMenu);
     }
 
@@ -63,6 +79,8 @@ public class UmsMenuServiceImpl implements UmsMenuService {
 
     @Override
     public int delete(Long id) {
+        UmsMenu umsMenu = menuMapper.selectByPrimaryKey(id);
+        updateHasChild(umsMenu);
         return menuMapper.deleteByPrimaryKey(id);
     }
 
