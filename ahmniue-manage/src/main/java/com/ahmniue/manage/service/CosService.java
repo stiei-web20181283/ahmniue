@@ -1,5 +1,8 @@
 package com.ahmniue.manage.service;
 
+import com.ahmniue.manage.dto.CosCallbackResult;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.File;
 /**
  * Cos对象存储管理Service
@@ -8,8 +11,6 @@ import java.io.File;
 public interface CosService {
     /**
      * 单个文件上传
-     * @param file
-     * @return
      */
-    String upload(File file);
+    CosCallbackResult upload(MultipartFile file);
 }

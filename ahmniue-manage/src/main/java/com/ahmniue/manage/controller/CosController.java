@@ -1,6 +1,7 @@
 package com.ahmniue.manage.controller;
 
 import com.ahmniue.common.api.CommonResult;
+import com.ahmniue.manage.dto.CosCallbackResult;
 import com.ahmniue.manage.service.CosService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 
@@ -21,13 +23,13 @@ public class CosController {
     private CosService cosService;
 
     @ApiOperation(value = "单个文件上传")
-    @RequestMapping(value = "/upload", method = RequestMethod.PUT)
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult upload(@RequestBody File file) {
+    public CommonResult<CosCallbackResult> upload(@RequestBody MultipartFile file) {
         if (file == null){
             return null;
         } else {
-            String url = cosService.upload(file);
+            CosCallbackResult url = cosService.upload(file);
             return CommonResult.success(url);
         }
     }

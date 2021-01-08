@@ -6,11 +6,13 @@ import com.qcloud.cos.auth.BasicCOSCredentials;
 import com.qcloud.cos.auth.COSCredentials;
 import com.qcloud.cos.region.Region;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * COS对象存储相关配置
  * Created by Lexcubia on 2021/1/8.
  */
+@Configuration
 public class CosConfig {
     @Value("${tencent.secretId}")
     private String TENCENT_COS_SECRETID;

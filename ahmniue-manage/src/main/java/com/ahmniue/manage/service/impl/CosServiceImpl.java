@@ -1,5 +1,6 @@
 package com.ahmniue.manage.service.impl;
 
+import com.ahmniue.manage.dto.CosCallbackResult;
 import com.ahmniue.manage.service.CosService;
 import com.qcloud.cos.COSClient;
 import com.qcloud.cos.ClientConfig;
@@ -10,6 +11,8 @@ import com.qcloud.cos.region.Region;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -19,8 +22,9 @@ import java.util.UUID;
  * Cos对象存储管理Service实现类
  * Created by Lexcubia on 2021/1/8.
  */
+@Service
 public class CosServiceImpl implements CosService {
-//    private static final Logger LOGGER = LoggerFactory.getLogger(CosServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CosServiceImpl.class);
     @Value("${tencent.secretId}")
     private String TENCENT_COS_SECRETID;
     @Value("${tencent.secretKey}")
@@ -33,15 +37,15 @@ public class CosServiceImpl implements CosService {
     private String TENCENT_COS_PATH;
     @Value("${tencent.prefix}")
     private String TENCENT_COS_PREFIX;
+
+//    @Autowired
+//    private COSClient cosClient;
+
     @Override
-    public String upload(File file) {
+    public CosCallbackResult upload(MultipartFile file) {
+        CosCallbackResult result= new CosCallbackResult();
         //生成唯一文件名
-        String fileName = generateUniqueName(file.getName());
-        // 存储目录
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-        String dir = TENCENT_COS_PREFIX +sdf.format(new Date());
-        //文件在存储桶中的key
-        String key = dir + fileName;
+        String fileName = generateUniqueName(file.getOriginalFilename());
         // 创建COS 凭证
         COSCredentials credentials = new BasicCOSCredentials(TENCENT_COS_SECRETID,TENCENT_COS_SECRETKEY);
         // 配置 COS 区域
@@ -49,16 +53,26 @@ public class CosServiceImpl implements CosService {
         // 创建 COS 客户端连接
         COSClient cosClient = new COSClient(credentials,clientConfig);
         try {
+            // 存储目录
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+            String dir = TENCENT_COS_PREFIX +sdf.format(new Date());
+            String slash = "/";
+            //文件在存储桶中的key
+            String key = dir + slash + fileName;
+            File localFile = File.createTempFile(String.valueOf(System.currentTimeMillis()),fileName);
+            file.transferTo(localFile);
             // 将 文件上传至 COS
-            PutObjectRequest objectRequest = new PutObjectRequest(TENCENT_COS_BUCKETNAME,key,file);
+            PutObjectRequest objectRequest = new PutObjectRequest(TENCENT_COS_BUCKETNAME, key, localFile);
             cosClient.putObject(objectRequest);
+            result.setFilename(fileName);
+            result.setPath(TENCENT_COS_PATH + slash + key);
         }catch (Exception e){
-            e.printStackTrace();
-//            LOGGER.error("上传失败", e);
+//            e.printStackTrace();
+            LOGGER.error("上传失败", e);
         }finally {
             cosClient.shutdown();
         }
-        return TENCENT_COS_PATH+fileName;
+        return result;
     }
     /**
      * 根据UUID生成唯一文件名
