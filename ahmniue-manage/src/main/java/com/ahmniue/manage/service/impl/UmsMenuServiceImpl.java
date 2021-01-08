@@ -27,9 +27,9 @@ public class UmsMenuServiceImpl implements UmsMenuService {
     @Override
     public int create(UmsMenu umsMenu) {
         umsMenu.setCreateTime(new Date());
-        umsMenu.setHaschildren(0);
+        umsMenu.setHasChildren(0);
         updateLevel(umsMenu);
-        updateHasChild(umsMenu);
+//        updateHasChild(umsMenu);
         return menuMapper.insert(umsMenu);
     }
 
@@ -54,12 +54,15 @@ public class UmsMenuServiceImpl implements UmsMenuService {
      * 更新父节点信息
      */
     private void  updateHasChild(UmsMenu umsMenu){
-        if (umsMenu.getParentId() != 0) {
+        if (umsMenu.getLevel() != 0) {
             UmsMenu parentMenu = menuMapper.selectByPrimaryKey(umsMenu.getParentId());
-            if (parentMenu != null) {
-                parentMenu.setHaschildren(1);
-            } else {
-                parentMenu.setHaschildren(0);
+            UmsMenuExample example = new UmsMenuExample();
+            example.createCriteria().andParentIdEqualTo(parentMenu.getId());
+            List<UmsMenu> child = menuMapper.selectByExample(example);
+            if (parentMenu != null && child.size() > 0) {
+                parentMenu.setHasChildren(1);
+            }  else {
+                parentMenu.setHasChildren(0);
             }
             menuMapper.updateByPrimaryKeySelective(parentMenu);
         }
@@ -68,7 +71,12 @@ public class UmsMenuServiceImpl implements UmsMenuService {
     public int update(Long id, UmsMenu umsMenu) {
         umsMenu.setId(id);
         updateLevel(umsMenu);
-        updateHasChild(umsMenu);
+//        UmsMenu oldMenu = menuMapper.selectByPrimaryKey(id);
+//        if (oldMenu.getParentId() != umsMenu.getParentId()){
+//            updateHasChild(umsMenu,1);
+//        } else {
+//            updateHasChild(umsMenu,-1);
+//        }
         return menuMapper.updateByPrimaryKeySelective(umsMenu);
     }
 
@@ -79,8 +87,8 @@ public class UmsMenuServiceImpl implements UmsMenuService {
 
     @Override
     public int delete(Long id) {
-        UmsMenu umsMenu = menuMapper.selectByPrimaryKey(id);
-        updateHasChild(umsMenu);
+//        UmsMenu umsMenu = menuMapper.selectByPrimaryKey(id);
+//        updateHasChild(umsMenu,-1);
         return menuMapper.deleteByPrimaryKey(id);
     }
 

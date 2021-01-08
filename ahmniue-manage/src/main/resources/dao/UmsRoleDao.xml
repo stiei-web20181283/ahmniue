@@ -13,7 +13,7 @@
             m.name name,
             m.icon icon,
             m.hidden hidden,
-            m.hasChildren hasChildren
+            m.has_children hasChildren
         FROM
             ums_admin_role_relation arr
                 LEFT JOIN ums_role r ON arr.role_id = r.id
@@ -35,8 +35,8 @@
             m.sort sort,
             m.name name,
             m.icon icon,
-            m.hidden hidden
-            m.hasChildren hasChildren
+            m.hidden hidden,
+            m.has_children hasChildren
         FROM
              ums_role_menu_relation rmr
                 LEFT JOIN ums_menu m ON rmr.menu_id = m.id
