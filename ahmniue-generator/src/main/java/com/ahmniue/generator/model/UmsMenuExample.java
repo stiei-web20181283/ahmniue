@@ -675,63 +675,63 @@ public class UmsMenuExample {
             return (Criteria) this;
         }
 
-        public Criteria andHaschildrenIsNull() {
-            addCriterion("hasChildren is null");
+        public Criteria andHasChildrenIsNull() {
+            addCriterion("has_children is null");
             return (Criteria) this;
         }
 
-        public Criteria andHaschildrenIsNotNull() {
-            addCriterion("hasChildren is not null");
+        public Criteria andHasChildrenIsNotNull() {
+            addCriterion("has_children is not null");
             return (Criteria) this;
         }
 
-        public Criteria andHaschildrenEqualTo(Integer value) {
-            addCriterion("hasChildren =", value, "haschildren");
+        public Criteria andHasChildrenEqualTo(Integer value) {
+            addCriterion("has_children =", value, "hasChildren");
             return (Criteria) this;
         }
 
-        public Criteria andHaschildrenNotEqualTo(Integer value) {
-            addCriterion("hasChildren <>", value, "haschildren");
+        public Criteria andHasChildrenNotEqualTo(Integer value) {
+            addCriterion("has_children <>", value, "hasChildren");
             return (Criteria) this;
         }
 
-        public Criteria andHaschildrenGreaterThan(Integer value) {
-            addCriterion("hasChildren >", value, "haschildren");
+        public Criteria andHasChildrenGreaterThan(Integer value) {
+            addCriterion("has_children >", value, "hasChildren");
             return (Criteria) this;
         }
 
-        public Criteria andHaschildrenGreaterThanOrEqualTo(Integer value) {
-            addCriterion("hasChildren >=", value, "haschildren");
+        public Criteria andHasChildrenGreaterThanOrEqualTo(Integer value) {
+            addCriterion("has_children >=", value, "hasChildren");
             return (Criteria) this;
         }
 
-        public Criteria andHaschildrenLessThan(Integer value) {
-            addCriterion("hasChildren <", value, "haschildren");
+        public Criteria andHasChildrenLessThan(Integer value) {
+            addCriterion("has_children <", value, "hasChildren");
             return (Criteria) this;
         }
 
-        public Criteria andHaschildrenLessThanOrEqualTo(Integer value) {
-            addCriterion("hasChildren <=", value, "haschildren");
+        public Criteria andHasChildrenLessThanOrEqualTo(Integer value) {
+            addCriterion("has_children <=", value, "hasChildren");
             return (Criteria) this;
         }
 
-        public Criteria andHaschildrenIn(List<Integer> values) {
-            addCriterion("hasChildren in", values, "haschildren");
+        public Criteria andHasChildrenIn(List<Integer> values) {
+            addCriterion("has_children in", values, "hasChildren");
             return (Criteria) this;
         }
 
-        public Criteria andHaschildrenNotIn(List<Integer> values) {
-            addCriterion("hasChildren not in", values, "haschildren");
+        public Criteria andHasChildrenNotIn(List<Integer> values) {
+            addCriterion("has_children not in", values, "hasChildren");
             return (Criteria) this;
         }
 
-        public Criteria andHaschildrenBetween(Integer value1, Integer value2) {
-            addCriterion("hasChildren between", value1, value2, "haschildren");
+        public Criteria andHasChildrenBetween(Integer value1, Integer value2) {
+            addCriterion("has_children between", value1, value2, "hasChildren");
             return (Criteria) this;
         }
 
-        public Criteria andHaschildrenNotBetween(Integer value1, Integer value2) {
-            addCriterion("hasChildren not between", value1, value2, "haschildren");
+        public Criteria andHasChildrenNotBetween(Integer value1, Integer value2) {
+            addCriterion("has_children not between", value1, value2, "hasChildren");
             return (Criteria) this;
         }
     }

@@ -11,7 +11,7 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="icon" jdbcType="VARCHAR" property="icon" />
     <result column="hidden" jdbcType="INTEGER" property="hidden" />
-    <result column="hasChildren" jdbcType="INTEGER" property="haschildren" />
+    <result column="has_children" jdbcType="INTEGER" property="hasChildren" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -72,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, parent_id, create_time, title, level, sort, name, icon, hidden, hasChildren
+    id, parent_id, create_time, title, level, sort, name, icon, hidden, has_children
   </sql>
   <select id="selectByExample" parameterType="com.ahmniue.generator.model.UmsMenuExample" resultMap="BaseResultMap">
     select
@@ -110,11 +110,11 @@
     </selectKey>
     insert into ums_menu (parent_id, create_time, title, 
       level, sort, name, 
-      icon, hidden, hasChildren
+      icon, hidden, has_children
       )
     values (#{parentId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{title,jdbcType=VARCHAR}, 
       #{level,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{icon,jdbcType=VARCHAR}, #{hidden,jdbcType=INTEGER}, #{haschildren,jdbcType=INTEGER}
+      #{icon,jdbcType=VARCHAR}, #{hidden,jdbcType=INTEGER}, #{hasChildren,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.ahmniue.generator.model.UmsMenu">
@@ -147,8 +147,8 @@
       <if test="hidden != null">
         hidden,
       </if>
-      <if test="haschildren != null">
-        hasChildren,
+      <if test="hasChildren != null">
+        has_children,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -176,8 +176,8 @@
       <if test="hidden != null">
         #{hidden,jdbcType=INTEGER},
       </if>
-      <if test="haschildren != null">
-        #{haschildren,jdbcType=INTEGER},
+      <if test="hasChildren != null">
+        #{hasChildren,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -217,8 +217,8 @@
       <if test="record.hidden != null">
         hidden = #{record.hidden,jdbcType=INTEGER},
       </if>
-      <if test="record.haschildren != null">
-        hasChildren = #{record.haschildren,jdbcType=INTEGER},
+      <if test="record.hasChildren != null">
+        has_children = #{record.hasChildren,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -236,7 +236,7 @@
       name = #{record.name,jdbcType=VARCHAR},
       icon = #{record.icon,jdbcType=VARCHAR},
       hidden = #{record.hidden,jdbcType=INTEGER},
-      hasChildren = #{record.haschildren,jdbcType=INTEGER}
+      has_children = #{record.hasChildren,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -268,8 +268,8 @@
       <if test="hidden != null">
         hidden = #{hidden,jdbcType=INTEGER},
       </if>
-      <if test="haschildren != null">
-        hasChildren = #{haschildren,jdbcType=INTEGER},
+      <if test="hasChildren != null">
+        has_children = #{hasChildren,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -284,7 +284,7 @@
       name = #{name,jdbcType=VARCHAR},
       icon = #{icon,jdbcType=VARCHAR},
       hidden = #{hidden,jdbcType=INTEGER},
-      hasChildren = #{haschildren,jdbcType=INTEGER}
+      has_children = #{hasChildren,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
