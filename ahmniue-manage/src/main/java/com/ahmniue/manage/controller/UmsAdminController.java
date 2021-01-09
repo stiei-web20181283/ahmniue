@@ -5,9 +5,11 @@ import com.ahmniue.common.api.CommonPage;
 import com.ahmniue.common.api.CommonResult;
 import com.ahmniue.generator.model.UmsAdmin;
 import com.ahmniue.generator.model.UmsRole;
+import com.ahmniue.manage.dto.CosCallbackResult;
 import com.ahmniue.manage.dto.UmsAdminLoginParam;
 import com.ahmniue.manage.dto.UmsAdminParam;
 import com.ahmniue.manage.dto.UpdateAdminPasswordParam;
+import com.ahmniue.manage.service.CosService;
 import com.ahmniue.manage.service.UmsAdminService;
 import com.ahmniue.manage.service.UmsMenuService;
 import com.ahmniue.manage.service.UmsRoleService;
@@ -15,9 +17,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
@@ -43,6 +47,8 @@ public class UmsAdminController {
     private UmsRoleService roleService;
     @Autowired
     private UmsMenuService menuService;
+    @Autowired
+    private CosService cosService;
 
 
     @ApiOperation("根据用户名、姓名或者状态分页获取用户列表")
@@ -184,6 +190,20 @@ public class UmsAdminController {
         }
         return CommonResult.failed();
     }
+    @ApiOperation("修改帐号头像")
+    @RequestMapping(value = "/updateAvatar/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult updateAvatar(@PathVariable Long id,
+                                     @RequestBody MultipartFile file) {
+        CosCallbackResult url = cosService.upload(file);
+        UmsAdmin umsAdmin = new UmsAdmin();
+        umsAdmin.setAvatar(url.getPath());
+        int count = adminService.update(id,umsAdmin);
+        if (count > 0) {
+            return CommonResult.success(count);
+        }
+        return CommonResult.failed();
+    }
 
     @ApiOperation("给用户分配角色")
     @RequestMapping(value = "/role/update", method = RequestMethod.POST)
@@ -203,5 +223,22 @@ public class UmsAdminController {
     public CommonResult<List<UmsRole>> getRoleList(@PathVariable Long adminId) {
         List<UmsRole> roleList = adminService.getRoleList(adminId);
         return CommonResult.success(roleList);
+    }
+
+    @ApiOperation("根据用户名获取用户信息")
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult getProfile(Principal principal) {
+        String username = principal.getName();
+        UmsAdmin umsAdmin = adminService.getAdminByUsername(username);
+        Map<String, Object> data = new HashMap<>();
+        data.put("profile", umsAdmin);
+        List<UmsRole> roleList = adminService.getRoleList(umsAdmin.getId());
+        if(CollUtil.isNotEmpty(roleList)){
+            List<Long> roleIds = roleList.stream().map(UmsRole::getId).collect(Collectors.toList());
+            data.put("roles",roleList);
+            data.put("roleIds",roleIds);
+        }
+        return CommonResult.success(data);
     }
 }

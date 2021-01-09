@@ -27,7 +27,7 @@ public class CosController {
     @ResponseBody
     public CommonResult<CosCallbackResult> upload(@RequestBody MultipartFile file) {
         if (file == null){
-            return null;
+            return CommonResult.failed("文件为空");
         } else {
             CosCallbackResult url = cosService.upload(file);
             return CommonResult.success(url);

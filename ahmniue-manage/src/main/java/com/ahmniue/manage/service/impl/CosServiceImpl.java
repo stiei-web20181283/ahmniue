@@ -44,8 +44,6 @@ public class CosServiceImpl implements CosService {
     @Override
     public CosCallbackResult upload(MultipartFile file) {
         CosCallbackResult result= new CosCallbackResult();
-        //生成唯一文件名
-        String fileName = generateUniqueName(file.getOriginalFilename());
         // 创建COS 凭证
         COSCredentials credentials = new BasicCOSCredentials(TENCENT_COS_SECRETID,TENCENT_COS_SECRETKEY);
         // 配置 COS 区域
@@ -57,6 +55,8 @@ public class CosServiceImpl implements CosService {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
             String dir = TENCENT_COS_PREFIX +sdf.format(new Date());
             String slash = "/";
+            //生成唯一文件名
+            String fileName = generateUniqueName(file.getOriginalFilename());
             //文件在存储桶中的key
             String key = dir + slash + fileName;
             File localFile = File.createTempFile(String.valueOf(System.currentTimeMillis()),fileName);
