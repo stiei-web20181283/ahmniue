@@ -15,7 +15,8 @@
 |     |  后端仓库 |   前端仓库  | 后台管理 |
 |---  |--- | --- | --- |
 |   码云  | [ahmniue](https://gitee.com/stiei-web20182183/ahmniue.git) | [ahmniue-vue](https://gitee.com/stiei-web20182183/ahmniue-vue.git) | [ahmniue-admin](https://gitee.com/stiei-web20182183/ahmniue-vue.git) |
-|   github   |  |  | |
+|   github   | [ahmniue](https://github.com/stiei-web20181283/ahmniue.git) | [ahmniue-vue](https://github.com/stiei-web20181283/ahmniue-vue.git) | [ahmniue-admin](https://github.com/stiei-web20181283/ahmniue-admin.git) |
+
 
 #### 项目结构
 项目采用分模块开发
