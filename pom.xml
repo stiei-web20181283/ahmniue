@@ -224,6 +224,19 @@
                 <artifactId>logstash-logback-encoder</artifactId>
                 <version>${logstash-logback.version}</version>
             </dependency>
+            <!--腾讯云存储依赖-->
+            <dependency>
+                <groupId>com.qcloud</groupId>
+                <artifactId>cos_api</artifactId>
+                <version>5.2.4</version>
+                <!--排除这个slf4j-log4j12-->
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
