@@ -30,8 +30,8 @@ redis:
     common: 86400 #1小时
 
 tencent:
-  secretId: AKID3OssbvlvgIi7JE861iEestfd185wsjjT
-  secretKey: P1PYWO1NU0rRlslqgFkfMn13dy5q674D
+  secretId: ahmniue
+  secretKey: ahmniue
   region: ap-shanghai
   bucketName: ahmniue-1257961979
   path: https://ahmniue-1257961979.cos.ap-shanghai.myqcloud.com
